@@ -178,4 +178,20 @@ public class BookUtilTest {
 		List<String> resultList = bookUtil.checkBookInfo(bookInfo);
 		assertThat(resultList.contains(ZENKAKU_ERROR), is(true));
 	}
+
+	@Test
+	public void test11() {
+		// パラメータで受け取った書籍情報をDtoに格納する。
+		// 出版社の全角チェック
+		BookDetailsInfo bookInfo = new BookDetailsInfo();
+		bookInfo.setTitle("タイトル");
+		bookInfo.setAuthor("著者");
+		bookInfo.setPublisher("publisher");
+		bookInfo.setPublishDate("11111111");
+		bookInfo.setIsbn("1234567890");
+		bookInfo.setDescription("description");
+
+		List<String> resultList = bookUtil.checkBookInfo(bookInfo);
+		assertThat(resultList.contains(ZENKAKU_ERROR), is(false));
+	}
 }
