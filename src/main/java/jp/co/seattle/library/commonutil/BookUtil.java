@@ -9,7 +9,7 @@ import java.util.List;
 import jp.co.seattle.library.dto.BookDetailsInfo;
 
 public class BookUtil {
-	private static final String REQUIRED_ERROR = "error";
+	private static final String REQUIRED_ERROR = "未入力の必須項目があります";
 	private static final String ISBN_ERROR = "ISBNの桁数または半角数字が正しくありません";
 	private static final String PUBLISHDATE_ERROR = "出版日は半角数字のYYYYMMDD形式で入力してください";
 	private static final String ZENKAKU_ERROR = "入力項目は全角文字で入力してください";
@@ -23,30 +23,28 @@ public class BookUtil {
 	public List<String> checkBookInfo(BookDetailsInfo bookInfo) {
 		List<String> errorList = new ArrayList<>();
 
-		errorList.add(REQUIRED_ERROR);
-		return errorList;
 		// 必須チェック
-//		if (isEmptyBookInfo(bookInfo)) {
-//			errorList.add(REQUIRED_ERROR);
-//		}
+		if (isEmptyBookInfo(bookInfo)) {
+			errorList.add(REQUIRED_ERROR);
+		}
 
 		// 全角文字チェック
-//		if (!isZenkaku(bookInfo)) {
-//			errorList.add(ZENKAKU_ERROR);
-//		}
+		if (!isZenkaku(bookInfo)) {
+			errorList.add(ZENKAKU_ERROR);
+		}
 
-//		String isbn = String.valueOf(bookInfo.getIsbn());
-//		 ISBNのバリデーションチェック
-//		if (!isbn.isEmpty() && !isValidIsbn(isbn)) {
-//			errorList.add(ISBN_ERROR);
-//		}
+		String isbn = String.valueOf(bookInfo.getIsbn());
+		// ISBNのバリデーションチェック
+		if (!isbn.isEmpty() && !isValidIsbn(isbn)) {
+			errorList.add(ISBN_ERROR);
+		}
 
 		// 出版日の形式チェック
-//		if (!checkDate(bookInfo.getPublishDate())) {
-//			errorList.add(PUBLISHDATE_ERROR);
-//		}
+		if (!checkDate(bookInfo.getPublishDate())) {
+			errorList.add(PUBLISHDATE_ERROR);
+		}
 
-//		return errorList;
+		return errorList;
 	}
 
 	/**
