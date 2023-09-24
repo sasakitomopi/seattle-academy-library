@@ -44,9 +44,9 @@ public class BookUtil {
 		}
 
 		// 出版日の形式チェック
-		if (!checkDate(bookInfo.getPublishDate())) {
-			errorList.add(PUBLISHDATE_ERROR);
-		}
+//		if (!checkDate(bookInfo.getPublishDate())) {
+//			errorList.add(PUBLISHDATE_ERROR);
+//		}
 
 		return errorList;
 	}
