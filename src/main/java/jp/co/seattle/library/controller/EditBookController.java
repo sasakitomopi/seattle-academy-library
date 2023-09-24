@@ -27,8 +27,6 @@ public class EditBookController {
 	private BooksService booksService;
 	@Autowired
 	private ThumbnailService thumbnailService;
-	@Autowired
-	private BookUtil bookUtil;
 
 	@RequestMapping(value = "/editBook", method = RequestMethod.GET)
 	public String transitionEdit(Locale locale, int bookId, Model model) {
@@ -70,7 +68,7 @@ public class EditBookController {
 		bookInfo.setIsbn(isbn);
 		bookInfo.setDescription(description);
 
-		List<String> errorList = bookUtil.checkBookInfo(bookInfo);
+		List<String> errorList = new BookUtil().checkBookInfo(bookInfo);
 		// errorListに一つでもエラーメッセージが入っていたら登録しない
 		if (errorList.size() > 0) {
 			model.addAttribute("bookInfo", bookInfo);
