@@ -9,7 +9,8 @@ on:
 jobs:
   ## 実行環境を設定する。今回はGithubが自前で用意しているホステッドランナーを利用
   build:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - name: Checkout repository
