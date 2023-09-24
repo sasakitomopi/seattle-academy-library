@@ -6,11 +6,9 @@ import static org.junit.Assert.assertThat;
 import java.util.List;
 
 import org.junit.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import jp.co.seattle.library.dto.BookDetailsInfo;
 
-@SpringBootTest
 public class BookUtilTest {
 	
 	private static final String REQUIRED_ERROR = "未入力の必須項目があります";
