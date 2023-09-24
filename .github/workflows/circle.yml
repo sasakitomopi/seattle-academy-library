@@ -25,7 +25,7 @@ jobs:
 
       - name: Build with Maven
         # run: mvn --batch-mode --update-snapshots package
-        run: mvn clean package
+        run: mvn package
 
       - name: Test with Maven
         run: mvn --batch-mode test
