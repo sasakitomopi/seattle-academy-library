@@ -6,13 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import jp.co.seattle.library.dto.BookDetailsInfo;
 
 public class BookUtil {
-	final static Logger logger = LoggerFactory.getLogger(BookUtil.class);
 	private static final String REQUIRED_ERROR = "error";
 	private static final String ISBN_ERROR = "ISBNの桁数または半角数字が正しくありません";
 	private static final String PUBLISHDATE_ERROR = "出版日は半角数字のYYYYMMDD形式で入力してください";
