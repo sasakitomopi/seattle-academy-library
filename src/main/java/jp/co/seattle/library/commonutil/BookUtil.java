@@ -28,6 +28,7 @@ public class BookUtil {
 	 */
 	public List<String> checkBookInfo(BookDetailsInfo bookInfo) {
 		List<String> errorList = new ArrayList<>();
+		System.out.println(isEmptyBookInfo(bookInfo));
 		// 必須チェック
 		if (isEmptyBookInfo(bookInfo)) {
 			errorList.add(REQUIRED_ERROR);
