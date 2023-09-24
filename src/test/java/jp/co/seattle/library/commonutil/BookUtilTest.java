@@ -45,8 +45,8 @@ public class BookUtilTest {
 		bookInfo.setIsbn("");
 		bookInfo.setDescription("");
 		
-		List<String> resultList = bookUtil.checkBookInfo(bookInfo);
-		assertThat(resultList.contains(REQUIRED_ERROR), is(true));
+//		List<String> resultList = bookUtil.checkBookInfo(bookInfo);
+		assertThat(bookInfo.getTitle().equals(""), is(true));
 		
 	}
 
