@@ -27,28 +27,30 @@ public class BookUtil {
 	public List<String> checkBookInfo(BookDetailsInfo bookInfo) {
 		List<String> errorList = new ArrayList<>();
 
+		errorList.add(REQUIRED_ERROR);
+		return errorList;
 		// 必須チェック
-		if (isEmptyBookInfo(bookInfo)) {
-			errorList.add(REQUIRED_ERROR);
-		}
+//		if (isEmptyBookInfo(bookInfo)) {
+//			errorList.add(REQUIRED_ERROR);
+//		}
 
 		// 全角文字チェック
-		if (!isZenkaku(bookInfo)) {
-			errorList.add(ZENKAKU_ERROR);
-		}
+//		if (!isZenkaku(bookInfo)) {
+//			errorList.add(ZENKAKU_ERROR);
+//		}
 
-		String isbn = String.valueOf(bookInfo.getIsbn());
+//		String isbn = String.valueOf(bookInfo.getIsbn());
 //		 ISBNのバリデーションチェック
-		if (!isbn.isEmpty() && !isValidIsbn(isbn)) {
-			errorList.add(ISBN_ERROR);
-		}
+//		if (!isbn.isEmpty() && !isValidIsbn(isbn)) {
+//			errorList.add(ISBN_ERROR);
+//		}
 
 		// 出版日の形式チェック
 //		if (!checkDate(bookInfo.getPublishDate())) {
 //			errorList.add(PUBLISHDATE_ERROR);
 //		}
 
-		return errorList;
+//		return errorList;
 	}
 
 	/**
