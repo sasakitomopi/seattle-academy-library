@@ -3,7 +3,7 @@ name : Junit CI
 ## PUSHされた時にCIを実行する
 on:
   [push]
-  
+
 ## 実際に実行するジョブを設定する
 ## 今回はビルドとテストを実行する
 jobs:
@@ -23,7 +23,7 @@ jobs:
           cache: maven
 
       - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots package
+        run: mvn --batch-mode --update-snapshots package -DskipTests
 
       - name: Test with Maven
         run: mvn --batch-mode test
