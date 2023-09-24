@@ -100,8 +100,8 @@ public class BookUtil {
 	 * @return タイトル、著者、出版社のどれか一つでもなかったらtrue
 	 */
 	private static boolean isZenkaku(BookDetailsInfo bookInfo) {
-		boolean result = bookInfo.getTitle().matches(ZENKAKU_REGREX) || bookInfo.getAuthor().matches(ZENKAKU_REGREX);
-//			|| bookInfo.getPublisher().matches(ZENKAKU_REGREX); 
+		boolean result = bookInfo.getTitle().matches(ZENKAKU_REGREX) || bookInfo.getAuthor().matches(ZENKAKU_REGREX)
+			|| bookInfo.getPublisher().matches(ZENKAKU_REGREX); 
 		return result;
 	}
 }
