@@ -16,10 +16,10 @@ public class BookUtilTest {
 	private static final String PUBLISHDATE_ERROR = "出版日は半角数字のYYYYMMDD形式で入力してください";
 	private static final String ZENKAKU_ERROR = "入力項目は全角文字で入力してください";
 
-	private BookUtil bookUtil = new BookUtil();
 	
 	@Test
 	public void test01() {
+		BookUtil bookUtil = new BookUtil();
 		// パラメータで受け取った書籍情報をDtoに格納する。
 		BookDetailsInfo bookInfo = new BookDetailsInfo();
 		bookInfo.setTitle("タイトル");
@@ -52,6 +52,7 @@ public class BookUtilTest {
 
 	@Test
 	public void test03() {
+		BookUtil bookUtil = new BookUtil();
 		// パラメータで受け取った書籍情報をDtoに格納する。
 		BookDetailsInfo bookInfo = new BookDetailsInfo();
 		bookInfo.setTitle("title");
@@ -68,6 +69,7 @@ public class BookUtilTest {
 
 	@Test
 	public void test04() {
+		BookUtil bookUtil = new BookUtil();
 		// パラメータで受け取った書籍情報をDtoに格納する。
 		BookDetailsInfo bookInfo = new BookDetailsInfo();
 		bookInfo.setTitle("title");
@@ -84,6 +86,7 @@ public class BookUtilTest {
 
 	@Test
 	public void test05() {
+		BookUtil bookUtil = new BookUtil();
 		// パラメータで受け取った書籍情報をDtoに格納する。
 		BookDetailsInfo bookInfo = new BookDetailsInfo();
 		bookInfo.setTitle("title");
@@ -101,6 +104,7 @@ public class BookUtilTest {
 
 	@Test
 	public void test06() {
+		BookUtil bookUtil = new BookUtil();
 		// パラメータで受け取った書籍情報をDtoに格納する。
 		BookDetailsInfo bookInfo = new BookDetailsInfo();
 		bookInfo.setTitle("title");
@@ -117,6 +121,7 @@ public class BookUtilTest {
 
 	@Test
 	public void test07() {
+		BookUtil bookUtil = new BookUtil();
 		// パラメータで受け取った書籍情報をDtoに格納する。
 		BookDetailsInfo bookInfo = new BookDetailsInfo();
 		bookInfo.setTitle("title");
@@ -133,6 +138,7 @@ public class BookUtilTest {
 
 	@Test
 	public void test08() {
+		BookUtil bookUtil = new BookUtil();
 		// パラメータで受け取った書籍情報をDtoに格納する。
 		// タイトルの全角チェック
 		BookDetailsInfo bookInfo = new BookDetailsInfo();
@@ -149,6 +155,7 @@ public class BookUtilTest {
 
 	@Test
 	public void test09() {
+		BookUtil bookUtil = new BookUtil();
 		// パラメータで受け取った書籍情報をDtoに格納する。
 		// 著者の全角チェック
 		BookDetailsInfo bookInfo = new BookDetailsInfo();
@@ -165,6 +172,7 @@ public class BookUtilTest {
 
 	@Test
 	public void test10() {
+		BookUtil bookUtil = new BookUtil();
 		// パラメータで受け取った書籍情報をDtoに格納する。
 		// 出版社の全角チェック
 		BookDetailsInfo bookInfo = new BookDetailsInfo();
