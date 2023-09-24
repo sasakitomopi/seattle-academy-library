@@ -1,12 +1,9 @@
 package jp.co.seattle.library.dto;
 
-import org.springframework.context.annotation.Configuration;
-
 /**
  * 書籍詳細情報格納DTO
  *
  */
-@Configuration
 public class BookDetailsInfo {
 
 	private int bookId;
