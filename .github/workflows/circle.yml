@@ -13,7 +13,7 @@ jobs:
   
   steps:
       ## Runnerにgitリポジトリのコピーをダウンロード
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Java 17をセットアップ
       - name: Set up JDK 8
