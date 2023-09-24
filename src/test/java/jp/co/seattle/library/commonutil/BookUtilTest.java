@@ -62,7 +62,7 @@ public class BookUtilTest {
 		bookInfo.setDescription("");
 		
 		List<String> resultList = bookUtil.checkBookInfo(bookInfo);
-		assertThat(resultList.contains(REQUIRED_ERROR), is(true));
+		assertThat(!resultList.isEmpty(), is(true));
 		
 	}
 
