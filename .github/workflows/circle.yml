@@ -1,0 +1,28 @@
+name : Junit CI
+
+## PUSHされた時にCIを実行する
+on:
+  [push]
+
+## 実際に実行するジョブを設定する
+## 今回はビルドとテストを実行する
+jobs:
+  build:
+    ## 実行環境を設定する。今回はGithubが自前で用意しているホステッドランナーを利用
+    runs-on: ubuntu-latest
+  
+  steps:
+      # Runnerにgitリポジトリのコピーをダウンロード
+      - name: CheckOut
+        uses: actions/checkout@v3
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+          cache : maven
+      # maven build jarファイルを作成するためのコマンド
+      - name: Build with Maven
+        run: mvn --batch-mode --update-snapshots package
+      # Test実行 Junitテストを実行するためのコマンド
+      - name : Test with Maven
+        run : mvn --batch-mode test
+
