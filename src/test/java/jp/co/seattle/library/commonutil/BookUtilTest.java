@@ -1,4 +1,4 @@
-package test.jp.co.seattle.library.commonutil;
+package jp.co.seattle.library.commonutil;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import jp.co.seattle.library.commonutil.BookUtil;
 import jp.co.seattle.library.dto.BookDetailsInfo;
 
 public class BookUtilTest {
