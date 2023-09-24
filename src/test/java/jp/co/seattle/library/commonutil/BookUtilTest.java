@@ -2,7 +2,6 @@ package jp.co.seattle.library.commonutil;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.matchers.JUnitMatchers.hasItem;
 
 import java.util.List;
 
@@ -47,7 +46,7 @@ public class BookUtilTest {
 		bookInfo.setDescription("");
 		
 		List<String> resultList = bookUtil.checkBookInfo(bookInfo);
-		assertThat(resultList, hasItem(REQUIRED_ERROR));
+		assertThat(resultList.contains(REQUIRED_ERROR), is(true));
 		
 	}
 
@@ -63,7 +62,7 @@ public class BookUtilTest {
 		bookInfo.setDescription("");
 		
 		List<String> resultList = bookUtil.checkBookInfo(bookInfo);
-		assertThat(resultList, hasItem(REQUIRED_ERROR));
+		assertThat(resultList.contains(REQUIRED_ERROR), is(true));
 		
 	}
 
@@ -79,7 +78,7 @@ public class BookUtilTest {
 		bookInfo.setDescription("");
 		
 		List<String> resultList = bookUtil.checkBookInfo(bookInfo);
-		assertThat(resultList, hasItem(REQUIRED_ERROR));
+		assertThat(resultList.contains(REQUIRED_ERROR), is(true));
 		
 	}
 
@@ -95,8 +94,8 @@ public class BookUtilTest {
 		bookInfo.setDescription("");
 		
 		List<String> resultList = bookUtil.checkBookInfo(bookInfo);
-		assertThat(resultList, hasItem(REQUIRED_ERROR));
-		assertThat(resultList, hasItem(PUBLISHDATE_ERROR));
+		assertThat(resultList.contains(REQUIRED_ERROR), is(true));
+		assertThat(resultList.contains(PUBLISHDATE_ERROR), is(true));
 		
 	}
 
@@ -112,7 +111,7 @@ public class BookUtilTest {
 		bookInfo.setDescription("");
 		
 		List<String> resultList = bookUtil.checkBookInfo(bookInfo);
-		assertThat(resultList, hasItem(ISBN_ERROR));
+		assertThat(resultList.contains(ISBN_ERROR), is(true));
 		
 	}
 
@@ -128,7 +127,7 @@ public class BookUtilTest {
 		bookInfo.setDescription("");
 		
 		List<String> resultList = bookUtil.checkBookInfo(bookInfo);
-		assertThat(resultList, hasItem(PUBLISHDATE_ERROR));
+		assertThat(resultList.contains(PUBLISHDATE_ERROR), is(true));
 		
 	}
 
@@ -145,7 +144,7 @@ public class BookUtilTest {
 		bookInfo.setDescription("description");
 
 		List<String> resultList = bookUtil.checkBookInfo(bookInfo);
-		assertThat(resultList, hasItem(ZENKAKU_ERROR));
+		assertThat(resultList.contains(ZENKAKU_ERROR), is(true));
 	}
 
 	@Test
@@ -161,7 +160,7 @@ public class BookUtilTest {
 		bookInfo.setDescription("description");
 
 		List<String> resultList = bookUtil.checkBookInfo(bookInfo);
-		assertThat(resultList, hasItem(ZENKAKU_ERROR));
+		assertThat(resultList.contains(ZENKAKU_ERROR), is(true));
 	}
 
 	@Test
@@ -177,6 +176,6 @@ public class BookUtilTest {
 		bookInfo.setDescription("description");
 
 		List<String> resultList = bookUtil.checkBookInfo(bookInfo);
-		assertThat(resultList, hasItem(ZENKAKU_ERROR));
+		assertThat(resultList.contains(ZENKAKU_ERROR), is(true));
 	}
 }
