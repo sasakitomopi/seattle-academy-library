@@ -24,7 +24,7 @@ public class BookUtilTest {
 	public void test01() {
 		// パラメータで受け取った書籍情報をDtoに格納する
 		BookDetailsInfo bookInfo = new BookDetailsInfo();
-		bookInfo.setTitle("タイトル");
+		bookInfo.setTitle("title");
 		bookInfo.setAuthor("著者");
 		bookInfo.setPublisher("出版社");
 		bookInfo.setPublishDate("11111111");
