@@ -22,7 +22,7 @@ public class BookUtilTest {
 	
 	@Test
 	public void test01() {
-		// パラメータで受け取った書籍情報をDtoに格納する。
+		// パラメータで受け取った書籍情報をDtoに格納する
 		BookDetailsInfo bookInfo = new BookDetailsInfo();
 		bookInfo.setTitle("タイトル");
 		bookInfo.setAuthor("著者");
