@@ -1,6 +1,7 @@
 package jp.co.seattle.library.service;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 import org.junit.Before;
@@ -8,59 +9,41 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.jdbc.core.RowMapper;
 
 import jp.co.seattle.library.dto.UserInfo;
-import jp.co.seattle.library.rowMapper.UserCountRowMapper;
-
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class UserServiceTest {
-
+@RunWith(MockitoJUnitRunner.class)
+public class UsersServiceTest {
 	/** メールアドレス */
-	private static final String EMAIL = "test@example.com";
-
+	private static final String EMAIL = "tomohiro.sasaki+01@metateam.co.jp";
 	/** パスワード */
-	private static final String PASSWORD = "1234567890";
-
-
-	/** 取得用SQL */
-	private static final String SELECT_SQL = "SELECT email, password FROM users WHERE email = '" + EMAIL + "' AND password = '" + PASSWORD
-			+ "'";
-
+	private static final String PASSWORD = "PassWord$99";
 	// SQL生成
 	private static final String INSERT_SQL = "INSERT INTO users (email, password,reg_date,upd_date) VALUES ('" + EMAIL + "','"
 			+ PASSWORD + "',now(),now()" + ")";
-
-	/** ユーザー情報 */
-	private UserInfo userInfo;
-
 	@Mock
 	private JdbcTemplate jdbcTemplate;
 	@InjectMocks
 	private UsersService userService;
-
 	@Before
-	private void setup() {
-		this.userInfo = new UserInfo(0, EMAIL, PASSWORD, null);
+	public void setup() {
 	}
-
 	@Test
-	private void selectUserInfo() {
+	public void selectUserInfo() {
+		final String sql = "SELECT email, password FROM users WHERE email = '" + EMAIL + "' AND password = '" + PASSWORD
+				+ "'";
+		final UserInfo userInfo = new UserInfo(1,EMAIL, PASSWORD, null);
 		System.out.println("Test Start");
-
-		when(this.jdbcTemplate.queryForObject(SELECT_SQL, new UserCountRowMapper()));
-
-		UserInfo userInfo = this.userService.selectUserInfo(EMAIL, PASSWORD);
-		assertEquals(userInfo, this.userInfo);
-
+	    // モックの戻り値を設定する
+	    when(jdbcTemplate.queryForObject(anyString(), any(RowMapper.class))).thenReturn(userInfo);
+		UserInfo userInfoResult = this.userService.selectUserInfo(EMAIL, PASSWORD);
+		System.out.println(userInfoResult);
+		assertEquals(userInfo, userInfoResult);
 		System.out.println("Test End");
 	}
-
 	@Test
-	private void registUser() {
-		this.userService.registUser(userInfo);
+	public void registUser() {
 	}
 }
