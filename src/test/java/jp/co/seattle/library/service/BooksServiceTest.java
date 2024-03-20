@@ -1,6 +1,10 @@
 package jp.co.seattle.library.service;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.junit.matchers.JUnitMatchers.hasItem;
+
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,24 +20,19 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import jp.co.seattle.library.commonutil.StartEndLogUtil;
-import jp.co.seattle.library.dto.UserInfo;
+import jp.co.seattle.library.dto.BookDetailsInfo;
+import jp.co.seattle.library.dto.BookInfo;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml"})
 @WebAppConfiguration
-public class UsersServiceTest {
+public class BooksServiceTest {
 
 	/** ログ */
 	final static Logger logger = LoggerFactory.getLogger(UsersServiceTest.class);
 
-	/** メールアドレス */
-	private static final String EMAIL = "test-address+01@metateam.co.jp";
-
-	/** パスワード */
-	private static final String PASSWORD = "PassWord$99";
-
 	@Autowired
-	private UsersService userService;
+	private BooksService booksService;
 
 	@Autowired
 	private WebApplicationContext wac;
@@ -46,35 +45,50 @@ public class UsersServiceTest {
 	}
 
 	@Test
-	public void selectUserInfo() {
-
+	public void getBookList() {
 		// 開始ログを出力
 		StartEndLogUtil.startLog(logger);
 
-	    // 想定戻り値を設定
-		final UserInfo userInfo = new UserInfo(0 ,EMAIL, PASSWORD, null);
+		// 想定戻り値を設定
+		final BookInfo bookInfo = new BookInfo(1, "サンプル1", "サンプル1", "サンプル1", "11111111", null);
 
-	    // 実績戻り値を設定
-		final UserInfo userInfoResult = userService.selectUserInfo(EMAIL, PASSWORD);
+		// 実績戻り値を設定
+		final List<BookInfo> bookInfoResultList = booksService.getBookList();
+		assertThat(bookInfoResultList, hasItem(bookInfo));
+		// 終了ログを出力
+		StartEndLogUtil.endLog(logger);
+	}
+
+	@Test
+	public void getBookInfo() {
+		// 開始ログを出力
+		StartEndLogUtil.startLog(logger);
+
+		// 想定戻り値を設定
+		final BookDetailsInfo bookInfo = new BookDetailsInfo(1, "サンプル1", "サンプル1", "サンプル1", "11111111", null, null, "12345678", "サンプル");
+
+		// 実績戻り値を設定
+		final BookDetailsInfo bookInfoResult = booksService.getBookInfo(1);
 
 		// 想定戻り値と実績戻り値を評価する
-		assertEquals(userInfo, userInfoResult);
+		assertEquals(bookInfoResult, bookInfo);
 
 		// 終了ログを出力
 		StartEndLogUtil.endLog(logger);
 	}
 
-// 	ユーザー情報を登録する場合のみコメントアウトを外す
-//	@Test
-//	public void registUser() {
-//		// 開始ログを出力
-//		StartEndLogUtil.startLog(logger);
-//
-//		// 登録処理を実行
-//		final UserInfo userInfo = new UserInfo(0 ,EMAIL, PASSWORD, null);
-//		userService.registUser(userInfo);
-//
-//		// 終了ログを出力
-//		StartEndLogUtil.endLog(logger);
-//	}
+	@Test
+	public void registBook () {
+		
+	}
+
+	@Test
+	public void deleteBook() {
+		
+	}
+
+	@Test
+	public void updateBook() {
+		
+	}
 }
