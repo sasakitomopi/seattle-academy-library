@@ -12,8 +12,6 @@ public class BookUtil {
 	private static final String REQUIRED_ERROR = "未入力の必須項目があります";
 	private static final String ISBN_ERROR = "ISBNの桁数または半角数字が正しくありません";
 	private static final String PUBLISHDATE_ERROR = "出版日は半角数字のYYYYMMDD形式で入力してください";
-	private static final String ZENKAKU_ERROR = "入力項目は全角文字で入力してください";
-	private static final String ZENKAKU_REGREX = "^[^ -~｡-ﾟ]+$";
 	/**
 	 * 登録前のバリデーションチェック
 	 *
@@ -26,11 +24,6 @@ public class BookUtil {
 		// 必須チェック
 		if (isEmptyBookInfo(bookInfo)) {
 			errorList.add(REQUIRED_ERROR);
-		}
-
-		// 全角文字チェック
-		if (!isZenkaku(bookInfo)) {
-			errorList.add(ZENKAKU_ERROR);
 		}
 
 		String isbn = String.valueOf(bookInfo.getIsbn());
@@ -85,18 +78,6 @@ public class BookUtil {
 	private static boolean isEmptyBookInfo(BookDetailsInfo bookInfo) {
 		boolean result = bookInfo.getTitle().isEmpty() || bookInfo.getAuthor().isEmpty()
 				|| bookInfo.getPublisher().isEmpty() || bookInfo.getPublishDate().isEmpty();
-		return result;
-	}
-
-	/**
-	 * 必須項目の全角文字チェック
-	 * 
-	 * @param bookInfo
-	 * @return タイトル、著者、出版社のどれか一つでもなかったらfalse
-	 */
-	private static boolean isZenkaku(BookDetailsInfo bookInfo) {
-		boolean result = bookInfo.getTitle().matches(ZENKAKU_REGREX) && bookInfo.getAuthor().matches(ZENKAKU_REGREX)
-			&& bookInfo.getPublisher().matches(ZENKAKU_REGREX); 
 		return result;
 	}
 }
