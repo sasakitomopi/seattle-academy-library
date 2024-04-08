@@ -31,8 +31,6 @@ public class AddBooksController {
 	private BooksService booksService;
 	@Autowired
 	private ThumbnailService thumbnailService;
-	@Autowired
-	private BookUtil bookUtil;
 
 	@RequestMapping(value = "/addBook", method = RequestMethod.GET) // value＝actionで指定したパラメータ
 	// RequestParamでname属性を取得
@@ -71,7 +69,7 @@ public class AddBooksController {
 		bookInfo.setIsbn(isbn);
 		bookInfo.setDescription(description);
 
-		List<String> errorList = bookUtil.checkBookInfo(bookInfo);
+		List<String> errorList = new BookUtil().checkBookInfo(bookInfo);
 		// errorListに一つでもエラーメッセージが入っていたら登録しない
 		if (errorList.size() > 0) {
 			redirectAttributes.addFlashAttribute("bookInfo", bookInfo);
